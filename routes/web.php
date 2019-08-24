@@ -11,6 +11,7 @@
 |
 */
 
+use App\App\Notifications\Models\DatabaseNotification;
 use App\User;
 use App\Comment;
 use App\Notifications\Comments\CommentCreated;
@@ -24,8 +25,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/notification', function() {
-    $user = User::find(1);
-    $comment = Comment::find(1);
+    $notification = DatabaseNotification::find('220cdc74-f4b1-46b5-b384-beb8b2e0f16c');
+    dd($notification->models);
+    // $user = User::find(1);
+    // $comment = Comment::find(1);
 
-    $user->notify(new CommentCreated($comment));
+    // $user->notify(new CommentCreated($comment));
 });
