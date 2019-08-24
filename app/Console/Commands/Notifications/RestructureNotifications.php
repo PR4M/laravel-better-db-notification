@@ -55,6 +55,10 @@ class RestructureNotifications extends Command
     protected function resolveModels(array $models)
     {
         return array_map(function ($model) {
+            if (method_exists($model->class, 'trashed')) {
+                return $model->class::withTrashed()->find($model->id);
+            }
+
             return $model->class::find($model->id);
         }, $models);
     }

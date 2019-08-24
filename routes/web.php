@@ -25,10 +25,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/notification', function() {
-    $notification = DatabaseNotification::find('220cdc74-f4b1-46b5-b384-beb8b2e0f16c');
-    dd($notification->models);
-    // $user = User::find(1);
-    // $comment = Comment::find(1);
+    //$notification = DatabaseNotification::find('220cdc74-f4b1-46b5-b384-beb8b2e0f16c');
+    //dd($notification->models);
+    $user = User::find(1);
+    $comment = Comment::withTrashed()->find(1);
 
-    // $user->notify(new CommentCreated($comment));
+    $user->notify(new CommentCreated($comment));
 });
