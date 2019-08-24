@@ -14,6 +14,7 @@
 use App\App\Notifications\Models\DatabaseNotification;
 use App\User;
 use App\Comment;
+use App\Notifications\Auth\UserJoined;
 use App\Notifications\Comments\CommentCreated;
 
 Route::get('/', function () {
@@ -32,3 +33,4 @@ Route::get('/notification', function() {
 
     $user->notify(new CommentCreated($comment));
 });
+

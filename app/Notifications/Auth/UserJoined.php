@@ -1,28 +1,28 @@
 <?php
 
-namespace App\Notifications\Comments;
+namespace App\Notifications\Auth;
 
-use App\Comment;
+use App\User;
 use Illuminate\Bus\Queueable;
 use App\App\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\App\Notifications\Channels\DatabaseChannel;
 
-class CommentCreated extends Notification
+class UserJoined extends Notification
 {
     use Queueable;
 
-    public $comment;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(Comment $comment)
+    public function __construct(User $user)
     {
-        $this->comment = $comment;
+        $this->user = $user;
     }
 
     /**
@@ -38,6 +38,8 @@ class CommentCreated extends Notification
         ];
     }
 
+
+
     /**
      * Get the array representation of the notification.
      *
@@ -47,14 +49,8 @@ class CommentCreated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'author' => [
-                'id' => $this->comment->author->id,
-                'name' => $this->comment->author->name
-            ],
-
-            'comment' => [
-                'id' => $this->comment->id,
-                'body' => $this->comment->body,
+            'user' => [
+                'id' => $this->user->id
             ]
         ];
     }

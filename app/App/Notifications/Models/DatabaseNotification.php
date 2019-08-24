@@ -10,4 +10,9 @@ class DatabaseNotification extends BaseDatabaseNotification
     {
         return (array) json_decode($value);
     }
+
+    public function getDataAttribute($value)
+    {
+        return json_decode($value);
+    }
 }
