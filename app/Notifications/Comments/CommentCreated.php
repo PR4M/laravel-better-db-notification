@@ -4,10 +4,10 @@ namespace App\Notifications\Comments;
 
 use App\Comment;
 use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
+use App\App\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Channels\DatabaseChannel;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\App\Notifications\Channels\DatabaseChannel;
 
 class CommentCreated extends Notification
 {
