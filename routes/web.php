@@ -11,6 +11,21 @@
 |
 */
 
+use App\User;
+use App\Comment;
+use App\Notifications\Comments\CommentCreated;
+
 Route::get('/', function () {
     return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/notification', function() {
+    $user = User::find(1);
+    $comment = Comment::find(1);
+
+    $user->notify(new CommentCreated($comment));
 });
